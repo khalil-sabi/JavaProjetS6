@@ -2,17 +2,23 @@ package northwind;
 
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+
 
 public class Tester {
 	public static void getClients() {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("fc.Application.MVC.Model");
 		EntityManager em = emf.createEntityManager();
 		String str = "SELECT c FROM Customers c";
-		TypedQuery<Customers> query = em.createQuery(str, Customers.class);
+		//TypedQuery<Customers> query = em.createQuery(str, Customers.class);
+		TypedQuery<Customers> query = em.createNamedQuery("Customers.findAll", Customers.class);
 		List<Customers> customers = query.getResultList();
 		for(Customers c : customers) {
 			System.out.println(c.getId());
@@ -23,4 +29,6 @@ public class Tester {
 		em.close();
 		emf.close();
 	}
+
+
 }

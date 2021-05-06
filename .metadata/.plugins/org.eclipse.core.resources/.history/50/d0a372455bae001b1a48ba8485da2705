@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6 mai 2021 ? 13:03:59 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="northwind.SalesReports" table="SALESREPORTS" optimistic-lock="version">
+        <id name="groupBy" type="java.lang.String">
+            <column name="GROUPBY" />
+            <generator class="assigned" />
+        </id>
+        <property name="display" type="java.lang.String">
+            <column name="DISPLAY" />
+        </property>
+        <property name="title" type="java.lang.String">
+            <column name="TITLE" />
+        </property>
+        <property name="filterRowSource" type="java.lang.String">
+            <column name="FILTERROWSOURCE" />
+        </property>
+        <property name="default_" type="int">
+            <column name="DEFAULT_" />
+        </property>
+    </class>
+</hibernate-mapping>

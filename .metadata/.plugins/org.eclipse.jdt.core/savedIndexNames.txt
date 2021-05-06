@@ -12,7 +12,6 @@ INDEX VERSION 1.131+C:\Users\SABI\Documents\java\genielogs6\.metadata\.plugins\o
 2932356345.index
 4081507764.index
 172646330.index
-242950196.index
 3143414156.index
 3087268394.index
 1895968321.index

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6 mai 2021 ? 13:03:59 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="northwind.PurchaseOrders" table="PURCHASEORDERS" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="employees" class="northwind.Employees" fetch="join">
+            <column name="EMPLOYEES" />
+        </many-to-one>
+        <many-to-one name="purchaseOrderStatus" class="northwind.PurchaseOrderStatus" fetch="join">
+            <column name="PURCHASEORDERSTATUS" />
+        </many-to-one>
+        <many-to-one name="suppliers" class="northwind.Suppliers" fetch="join">
+            <column name="SUPPLIERS" />
+        </many-to-one>
+        <property name="submittedDate" type="java.util.Date">
+            <column name="SUBMITTEDDATE" />
+        </property>
+        <property name="creationDate" type="java.util.Date">
+            <column name="CREATIONDATE" />
+        </property>
+        <property name="expectedDate" type="java.util.Date">
+            <column name="EXPECTEDDATE" />
+        </property>
+        <property name="shippingFee" type="java.math.BigDecimal">
+            <column name="SHIPPINGFEE" />
+        </property>
+        <property name="taxes" type="java.math.BigDecimal">
+            <column name="TAXES" />
+        </property>
+        <property name="paymentDate" type="java.util.Date">
+            <column name="PAYMENTDATE" />
+        </property>
+        <property name="paymentAmount" type="java.math.BigDecimal">
+            <column name="PAYMENTAMOUNT" />
+        </property>
+        <property name="paymentMethod" type="java.lang.String">
+            <column name="PAYMENTMETHOD" />
+        </property>
+        <property name="notes" type="java.lang.String">
+            <column name="NOTES" />
+        </property>
+        <property name="approvedBy" type="java.lang.Integer">
+            <column name="APPROVEDBY" />
+        </property>
+        <property name="approvedDate" type="java.util.Date">
+            <column name="APPROVEDDATE" />
+        </property>
+        <property name="submittedBy" type="java.lang.Integer">
+            <column name="SUBMITTEDBY" />
+        </property>
+        <set name="purchaseOrderDetailses" table="PURCHASEORDERDETAILS" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="northwind.PurchaseOrderDetails" />
+        </set>
+        <set name="inventoryTransactionses" table="INVENTORYTRANSACTIONS" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="northwind.InventoryTransactions" />
+        </set>
+    </class>
+</hibernate-mapping>

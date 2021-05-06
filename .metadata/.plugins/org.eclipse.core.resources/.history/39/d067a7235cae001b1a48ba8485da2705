@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6 mai 2021 ? 13:03:59 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="fc.Application.MVC.Model.Commande" table="COMMANDE" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="produit" type="java.lang.String">
+            <column name="PRODUIT" />
+        </property>
+        <property name="quantite" type="int">
+            <column name="QUANTITE" />
+        </property>
+        <property name="prixU" type="java.lang.Double">
+            <column name="PRIXU" />
+        </property>
+        <property name="discount" type="java.lang.Double">
+            <column name="DISCOUNT" />
+        </property>
+    </class>
+</hibernate-mapping>

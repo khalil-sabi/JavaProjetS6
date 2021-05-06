@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6 mai 2021 ? 13:03:59 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="northwind.PurchaseOrderDetails" table="PURCHASEORDERDETAILS" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="inventoryTransactions" class="northwind.InventoryTransactions" fetch="join">
+            <column name="INVENTORYTRANSACTIONS" />
+        </many-to-one>
+        <many-to-one name="products" class="northwind.Products" fetch="join">
+            <column name="PRODUCTS" />
+        </many-to-one>
+        <many-to-one name="purchaseOrders" class="northwind.PurchaseOrders" fetch="join">
+            <column name="PURCHASEORDERS" />
+        </many-to-one>
+        <property name="quantity" type="java.math.BigDecimal">
+            <column name="QUANTITY" />
+        </property>
+        <property name="unitCost" type="java.math.BigDecimal">
+            <column name="UNITCOST" />
+        </property>
+        <property name="dateReceived" type="java.util.Date">
+            <column name="DATERECEIVED" />
+        </property>
+        <property name="postedToInventory" type="int">
+            <column name="POSTEDTOINVENTORY" />
+        </property>
+    </class>
+</hibernate-mapping>

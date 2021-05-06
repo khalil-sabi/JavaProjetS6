@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6 mai 2021 ? 13:03:59 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="northwind.Products" table="PRODUCTS" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="supplierIds" type="java.lang.String">
+            <column name="SUPPLIERIDS" />
+        </property>
+        <property name="productCode" type="java.lang.String">
+            <column name="PRODUCTCODE" />
+        </property>
+        <property name="productName" type="java.lang.String">
+            <column name="PRODUCTNAME" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="standardCost" type="java.math.BigDecimal">
+            <column name="STANDARDCOST" />
+        </property>
+        <property name="listPrice" type="java.math.BigDecimal">
+            <column name="LISTPRICE" />
+        </property>
+        <property name="reorderLevel" type="java.lang.Integer">
+            <column name="REORDERLEVEL" />
+        </property>
+        <property name="targetLevel" type="java.lang.Integer">
+            <column name="TARGETLEVEL" />
+        </property>
+        <property name="quantityPerUnit" type="java.lang.String">
+            <column name="QUANTITYPERUNIT" />
+        </property>
+        <property name="discontinued" type="int">
+            <column name="DISCONTINUED" />
+        </property>
+        <property name="minimumReorderQuantity" type="java.lang.Integer">
+            <column name="MINIMUMREORDERQUANTITY" />
+        </property>
+        <property name="category" type="java.lang.String">
+            <column name="CATEGORY" />
+        </property>
+        <property name="attachments" type="java.sql.Blob">
+            <column name="ATTACHMENTS" />
+        </property>
+        <set name="orderDetailses" table="ORDERDETAILS" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="northwind.OrderDetails" />
+        </set>
+        <set name="purchaseOrderDetailses" table="PURCHASEORDERDETAILS" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="northwind.PurchaseOrderDetails" />
+        </set>
+        <set name="inventoryTransactionses" table="INVENTORYTRANSACTIONS" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="northwind.InventoryTransactions" />
+        </set>
+    </class>
+</hibernate-mapping>

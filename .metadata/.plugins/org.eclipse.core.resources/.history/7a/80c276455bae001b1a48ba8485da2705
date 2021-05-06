@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6 mai 2021 ? 13:03:59 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="northwind.Orders" table="ORDERS" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="customers" class="northwind.Customers" fetch="join">
+            <column name="CUSTOMERS" />
+        </many-to-one>
+        <many-to-one name="employees" class="northwind.Employees" fetch="join">
+            <column name="EMPLOYEES" />
+        </many-to-one>
+        <many-to-one name="ordersStatus" class="northwind.OrdersStatus" fetch="join">
+            <column name="ORDERSSTATUS" />
+        </many-to-one>
+        <many-to-one name="ordersTaxStatus" class="northwind.OrdersTaxStatus" fetch="join">
+            <column name="ORDERSTAXSTATUS" />
+        </many-to-one>
+        <many-to-one name="shippers" class="northwind.Shippers" fetch="join">
+            <column name="SHIPPERS" />
+        </many-to-one>
+        <property name="orderDate" type="java.util.Date">
+            <column name="ORDERDATE" />
+        </property>
+        <property name="shippedDate" type="java.util.Date">
+            <column name="SHIPPEDDATE" />
+        </property>
+        <property name="shipName" type="java.lang.String">
+            <column name="SHIPNAME" />
+        </property>
+        <property name="shipAddress" type="java.lang.String">
+            <column name="SHIPADDRESS" />
+        </property>
+        <property name="shipCity" type="java.lang.String">
+            <column name="SHIPCITY" />
+        </property>
+        <property name="shipStateProvince" type="java.lang.String">
+            <column name="SHIPSTATEPROVINCE" />
+        </property>
+        <property name="shipZipPostalCode" type="java.lang.String">
+            <column name="SHIPZIPPOSTALCODE" />
+        </property>
+        <property name="shipCountryRegion" type="java.lang.String">
+            <column name="SHIPCOUNTRYREGION" />
+        </property>
+        <property name="shippingFee" type="java.math.BigDecimal">
+            <column name="SHIPPINGFEE" />
+        </property>
+        <property name="taxes" type="java.math.BigDecimal">
+            <column name="TAXES" />
+        </property>
+        <property name="paymentType" type="java.lang.String">
+            <column name="PAYMENTTYPE" />
+        </property>
+        <property name="paidDate" type="java.util.Date">
+            <column name="PAIDDATE" />
+        </property>
+        <property name="notes" type="java.lang.String">
+            <column name="NOTES" />
+        </property>
+        <property name="taxRate" type="java.lang.Double">
+            <column name="TAXRATE" />
+        </property>
+        <set name="invoiceses" table="INVOICES" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="northwind.Invoices" />
+        </set>
+        <set name="inventoryTransactionses" table="INVENTORYTRANSACTIONS" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="northwind.InventoryTransactions" />
+        </set>
+        <set name="orderDetailses" table="ORDERDETAILS" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="northwind.OrderDetails" />
+        </set>
+    </class>
+</hibernate-mapping>
