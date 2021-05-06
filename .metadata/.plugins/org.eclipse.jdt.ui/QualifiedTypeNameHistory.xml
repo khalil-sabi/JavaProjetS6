@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="fc.Application.MVC.Model.Client"/>
+    <fullyQualifiedTypeName name="fc.Application.MVC.ViewModels.ClientViewModel"/>
+    <fullyQualifiedTypeName name="fc.Application.MVC.Controllers.EditClientController"/>
+    <fullyQualifiedTypeName name="fc.Application.MVC.Controllers.ListCommandesController"/>
+    <fullyQualifiedTypeName name="fc.Application.MVC.Controllers.ListClientsController"/>
+    <fullyQualifiedTypeName name="fc.Application.MVC.ViewModels.ProduitViewModel"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
+    <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+    <fullyQualifiedTypeName name="javax.persistence.TypedQuery"/>
+    <fullyQualifiedTypeName name="javax.persistence.Query"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="javassist.bytecode.Descriptor.Iterator"/>
+    <fullyQualifiedTypeName name="northwind.Customers"/>
+    <fullyQualifiedTypeName name="Dict.Dictionary"/>
+    <fullyQualifiedTypeName name="org.mockito.Mockito"/>
+    <fullyQualifiedTypeName name="exceptions.NameNotGivenException"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+</qualifiedTypeNameHistroy>

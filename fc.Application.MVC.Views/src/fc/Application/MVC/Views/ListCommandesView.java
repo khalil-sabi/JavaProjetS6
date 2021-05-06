@@ -1,0 +1,113 @@
+package fc.Application.MVC.Views;
+
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
+
+import fc.Application.MVC.Controllers.ListClientsController;
+import fc.Application.MVC.Controllers.ListCommandesController;
+import fc.Application.MVC.ViewModels.CommandeViewModel;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
+
+public class ListCommandesView extends Dialog {
+
+	protected Object result;
+	protected Shell shell;
+	private Table table;
+	
+	public RunController m_Infrastructure;
+	private TableColumn tblclmnNewColumn;
+	private TableColumn tblclmnQuantite;
+	private TableColumn tblclmnNewColumn_1;
+	private TableColumn tblclmnNewColumn_2;
+	
+	protected CommandeViewModel[] getViewModel()
+	{
+		if (m_Infrastructure != null)
+			return (CommandeViewModel[])m_Infrastructure.m_ViewModel;
+		else
+			return new CommandeViewModel[0];
+	}
+
+	/**
+	 * Create the dialog.
+	 * @param parent
+	 * @param style
+	 */
+	public ListCommandesView(Shell parent, int style) {
+		super(parent, style);
+		setText("SWT Dialog");
+	}
+
+	/**
+	 * Open the dialog.
+	 * @return the result
+	 */
+	public Object open() {
+		createContents();
+		shell.open();
+		shell.layout();
+		Display display = getParent().getDisplay();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Create contents of the dialog.
+	 */
+	private void createContents() {
+		shell = new Shell(getParent(), getStyle());
+		shell.setSize(620, 554);
+		shell.setText(getText());
+		
+		table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
+		table.setBounds(26, 30, 555, 400);
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+		
+		tblclmnNewColumn = new TableColumn(table, SWT.NONE);
+		tblclmnNewColumn.setWidth(100);
+		tblclmnNewColumn.setText("Produit");
+		
+		tblclmnQuantite = new TableColumn(table, SWT.NONE);
+		tblclmnQuantite.setWidth(100);
+		tblclmnQuantite.setText("Quantite");
+		
+		tblclmnNewColumn_1 = new TableColumn(table, SWT.NONE);
+		tblclmnNewColumn_1.setWidth(100);
+		tblclmnNewColumn_1.setText("Prix unitaire");
+		
+		tblclmnNewColumn_2 = new TableColumn(table, SWT.NONE);
+		tblclmnNewColumn_2.setWidth(100);
+		tblclmnNewColumn_2.setText("Discount");
+		
+		CommandeViewModel[] ps = getViewModel();
+		for (CommandeViewModel p : ps)
+		{
+		    TableItem item = new TableItem(table, SWT.NONE);
+		    item.setText(new String[] { ""+p.getProduit(), ""+p.getQuantite(), ""+p.getPrixU(),""+p.getDiscount() });
+		}
+		
+		Button btnNewButton = new Button(shell, SWT.NONE);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				m_Infrastructure.runController(shell,ListClientsController.class);
+			}
+		});
+		btnNewButton.setBounds(491, 455, 90, 30);
+		btnNewButton.setText("Revenir");
+
+	}
+}

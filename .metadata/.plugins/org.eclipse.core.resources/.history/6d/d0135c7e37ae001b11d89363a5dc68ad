@@ -1,0 +1,16 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import fc.Application.MVC.Model.Model;
+import northwind.*;
+
+class TestModel {
+
+	@Test
+	void test() {
+		Model.getClients();
+		fail("Not yet implemented");
+	}
+
+}

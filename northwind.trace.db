@@ -1,0 +1,5 @@
+2021-04-16 14:48:40 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CUSTOMERS" non trouvée
+Table "CUSTOMERS" not found; SQL statement:
+select * from customers
+ [42102-199]
