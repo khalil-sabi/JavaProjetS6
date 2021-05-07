@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Shell;
 import fc.Application.MVC.Controllers.ActionResult;
 import fc.Application.MVC.Controllers.Controller;
 import fc.Application.MVC.Controllers.EditClientController;
+import fc.Application.MVC.Controllers.ListClientsController;
 import fc.Application.MVC.Model.Model;
 import fc.Application.MVC.Views.RunController;
 
@@ -34,7 +35,7 @@ public class Infrastructure
 		m_Shell.open();
 		m_Shell.setVisible(false);
 		
-		runController(EditClientController.class, 1);
+		runController(ListClientsController.class, 1);
 	}
 	
 	public void runController(Class<?> c, Object ... args)
