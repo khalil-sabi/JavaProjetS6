@@ -1,0 +1,18 @@
+package fc.Application.MVC.Controllers;
+
+import fc.Application.MVC.Model.Commande;
+import fc.Application.MVC.ViewModels.CommandeViewModel;
+
+public class ListCommandesController extends Controller{
+	@Override
+	public ActionResult run(Object ...args) {
+		Commande[] orders = m_Model.getCommandes();
+		CommandeViewModel[] commandes = new CommandeViewModel[orders.length];
+		
+		for(int i=0;i < orders.length;i++) {
+			Commande c = orders[i];
+			produitViewModel[i] = new CommandeViewModel(produit.getId(),produit.getProduit(),produit.getQuantite(),produit.getPrixU(),produit.getDiscount());
+		}
+		return View(null);
+	}
+}

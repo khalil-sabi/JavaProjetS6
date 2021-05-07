@@ -1,18 +1,36 @@
 package fc.Application.MVC.Controllers;
 
-import fc.Application.MVC.Model.Client;
-import fc.Application.MVC.ViewModels.ClientViewModel;
+import java.util.List;
+
+import northwind.Customers;
+import northwind.Orders;
+import fc.Application.MVC.ViewModels.*;
 
 public class ListClientsController extends Controller{
 	@Override
 	public ActionResult run(Object ...args) {
-		Client[] clients = m_Model.clients;
-		ClientViewModel[] clientViewModel = new ClientViewModel[clients.length];
+		Integer clientId = (Integer)args[0];
 		
-		for(int i=0;i < clients.length;i++) {
-			Client client = clients[i];
-			clientViewModel[i] = new ClientViewModel(client.getId(),client.getNom(),client.getPrenom(),client.getEmail());
+		DataContainer dc = new DataContainer();
+		
+		List<Customers> customers = m_Model.getCustomers();
+		ClientViewModel[] clients = new ClientViewModel[customers.size()];
+		
+		List<Orders> orders = m_Model.getCommandes(clientId);
+		CommandeViewModel[] commandes = new CommandeViewModel[orders.size()];
+		
+		for(int i=0;i < customers.size();i++) {
+			clients[i] = new ClientViewModel(customers.get(i));
 		}
-		return View(clientViewModel);
+		
+		for(int i=0;i < orders.size();i++) {
+			commandes[i] = new CommandeViewModel(orders.get(i));
+		}
+		
+		dc.clientSelectionne = clients[clientId];
+		dc.customers = clients;
+		dc.commandes = commandes;
+		
+		return View(dc);
 	}
 }

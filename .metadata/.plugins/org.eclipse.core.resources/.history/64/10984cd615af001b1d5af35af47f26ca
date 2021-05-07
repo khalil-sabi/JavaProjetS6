@@ -1,0 +1,8 @@
+package fc.Application.MVC.ViewModels;
+
+import java.util.Date;
+
+public class CommandeViewModel {
+	private Integer Id;
+	private Date orderDate;
+}

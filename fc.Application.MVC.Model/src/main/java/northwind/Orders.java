@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -290,7 +292,7 @@ public class Orders implements java.io.Serializable {
 		this.inventoryTransactionses = inventoryTransactionses;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "orders")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "orders", cascade = CascadeType.ALL)
 	public Set<OrderDetails> getOrderDetailses() {
 		return this.orderDetailses;
 	}

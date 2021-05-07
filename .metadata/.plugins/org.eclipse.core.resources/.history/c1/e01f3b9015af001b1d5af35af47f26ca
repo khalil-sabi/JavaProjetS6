@@ -1,0 +1,6 @@
+package fc.Application.MVC.ViewModels;
+
+public class CommandeViewModel {
+	private Integer Id;
+	private Date orderDate;
+}

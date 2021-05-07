@@ -1,0 +1,82 @@
+package fc.Application.MVC.Model;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+
+import northwind.Customers;
+import northwind.Orders;
+
+
+public class Model {
+	
+	
+	private static Model s_model = null;
+	
+	public static Model getModel() {
+		return s_model;
+	}
+	
+	public static List<Customers> getCustomers() {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("fc.Application.MVC.Model");
+		EntityManager em = emf.createEntityManager();
+		//TypedQuery<Customers> query = em.createQuery(str, Customers.class);
+		TypedQuery<Customers> query = em.createNamedQuery("Customers.findAll", Customers.class);
+		List<Customers> customers = query.getResultList();
+		em.close();
+		emf.close();
+		return customers;
+	}
+	
+	public static Customers getUnCustomers(int CustomerId) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("fc.Application.MVC.Model");
+		EntityManager em = emf.createEntityManager();
+		TypedQuery<Customers> query = em.createNamedQuery("Customers.findOne", Customers.class);
+		query.setParameter(1, CustomerId);
+		Customers o = query.getSingleResult();
+		em.close();
+		emf.close();
+		return o;
+	}
+	
+	public static void updateCustomer(Integer id, String nom, String prenom, String email) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("fc.Application.MVC.Model");
+		EntityManager em = emf.createEntityManager();
+		TypedQuery<Customers> query = em.createNamedQuery("Customers.findOne", Customers.class);
+		query.setParameter(1, id);
+		Customers o = query.getSingleResult();
+		o.setLastName(nom);
+		o.setFirstName(prenom);
+		o.setEmailAddress(email);
+		em.close();
+		emf.close();
+		
+	}
+	
+	public static List<Orders> getCommandes(Integer clientId) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("fc.Application.MVC.Model");
+		EntityManager em = emf.createEntityManager();
+		TypedQuery<Orders> query = em.createNamedQuery("Orders.findName", Orders.class);
+		query.setParameter(1, clientId);
+		List<Orders> orders = query.getResultList();
+		em.close();
+		emf.close();
+		return orders;
+	}
+	
+	public static Orders getUneCommande(Integer orderId) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("fc.Application.MVC.Model");
+		EntityManager em = emf.createEntityManager();
+		TypedQuery<Orders> query = em.createNamedQuery("Orders.findOne", Orders.class);
+		query.setParameter(1, orderId);
+		Orders o = query.getSingleResult();
+		em.close();
+		emf.close();
+		return o;
+	}
+	
+	
+}

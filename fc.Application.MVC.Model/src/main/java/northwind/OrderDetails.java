@@ -3,6 +3,8 @@ package northwind;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -87,7 +89,7 @@ public class OrderDetails implements java.io.Serializable {
 		this.orders = orders;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "product_id")
 	public Products getProducts() {
 		return this.products;

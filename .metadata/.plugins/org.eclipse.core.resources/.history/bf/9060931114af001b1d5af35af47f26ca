@@ -1,0 +1,21 @@
+package fc.Application.MVC.Controllers;
+
+import java.util.List;
+
+import fc.Application.MVC.Model.Commande;
+import fc.Application.MVC.ViewModels.CommandeViewModel;
+import northwind.Orders;
+
+public class ListCommandesController extends Controller{
+	@Override
+	public ActionResult run(Object ...args) {
+		List<Orders> orders = m_Model.getCommandes();
+		CommandeViewModel[] commandes = new CommandeViewModel[orders.size()];
+		
+		for(int i=0;i < orders.size();i++) {
+			
+			produitViewModel[i] = new CommandeViewModel(orders.get(i));
+		}
+		return View(null);
+	}
+}

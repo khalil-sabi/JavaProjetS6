@@ -1,0 +1,26 @@
+1620369890405	Delete elements
+1620370071200	Rename compilation unit 'Customers.java'
+1620370146464	Delete element
+1620370199454	Delete element
+1620370623868	Rename type 'Employees'
+1620370667661	Rename type 'InventoryTransactions'
+1620370703802	Rename type 'InventoryTransactionTypes'
+1620370737822	Rename type 'Invoices'
+1620370771020	Rename type 'OrderDetails'
+1620370801747	Rename type 'OrderDetailsStatus'
+1620370833287	Rename type 'Orders'
+1620370845106	Rename type 'OrdersStatus'
+1620370855664	Rename type 'OrdersTaxStatus'
+1620370865605	Rename type 'Privileges'
+1620370872430	Rename type 'Products'
+1620370880775	Rename type 'PurchaseOrderDetails'
+1620370890955	Rename type 'PurchaseOrders'
+1620370904282	Rename type 'Suppliers'
+1620370911202	Rename type 'Strings'
+1620370917438	Rename type 'Shippers'
+1620370926143	Rename type 'SalesReports'
+1620370936813	Rename type 'PurchaseOrderStatus'
+1620375426905	Rename package 'fc.Application.MVC.ViewModels'
+1620375529898	Rename type 'CustomersViewModel'
+1620379671329	Rename type 'Details'
+1620379976051	Delete element

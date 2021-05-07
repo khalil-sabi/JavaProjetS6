@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="fc.Application.MVC.Model.Client"/>
-    <fullyQualifiedTypeName name="fc.Application.MVC.ViewModels.ClientViewModel"/>
-    <fullyQualifiedTypeName name="fc.Application.MVC.Controllers.EditClientController"/>
     <fullyQualifiedTypeName name="fc.Application.MVC.Controllers.ListCommandesController"/>
-    <fullyQualifiedTypeName name="fc.Application.MVC.Controllers.ListClientsController"/>
     <fullyQualifiedTypeName name="fc.Application.MVC.ViewModels.ProduitViewModel"/>
     <fullyQualifiedTypeName name="javax.persistence.Query"/>
     <fullyQualifiedTypeName name="javassist.bytecode.Descriptor.Iterator"/>
-    <fullyQualifiedTypeName name="northwind.Customers"/>
     <fullyQualifiedTypeName name="Dict.Dictionary"/>
     <fullyQualifiedTypeName name="org.mockito.Mockito"/>
     <fullyQualifiedTypeName name="exceptions.NameNotGivenException"/>
@@ -23,4 +19,22 @@
     <fullyQualifiedTypeName name="javax.persistence.NamedQueries"/>
     <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="javax.persistence.Id"/>
+    <fullyQualifiedTypeName name="fc.Application.MVC.ViewModels.CustomersViewModel"/>
+    <fullyQualifiedTypeName name="northwind.Suppliers"/>
+    <fullyQualifiedTypeName name="northwind.Customers"/>
+    <fullyQualifiedTypeName name="fc.Application.MVC.ViewModels.ClientViewModel"/>
+    <fullyQualifiedTypeName name="northwind.OrderDetails"/>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.Order"/>
+    <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
+    <fullyQualifiedTypeName name="northwind.Orders"/>
+    <fullyQualifiedTypeName name="fc.Application.MVC.Controllers.ListClientsController"/>
+    <fullyQualifiedTypeName name="fc.Application.MVC.ViewModels.CommandeViewModel"/>
+    <fullyQualifiedTypeName name="fc.Application.MVC.ViewModels.DataContainer"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="java.util.Objects"/>
+    <fullyQualifiedTypeName name="fc.Application.MVC.Controllers.EditClientController"/>
+    <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
+    <fullyQualifiedTypeName name="javax.persistence.FlushModeType"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityTransaction"/>
 </qualifiedTypeNameHistroy>

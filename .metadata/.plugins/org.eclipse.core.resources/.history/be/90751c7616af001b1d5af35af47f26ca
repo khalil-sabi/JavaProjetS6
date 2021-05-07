@@ -1,0 +1,47 @@
+package fc.Application.MVC.ViewModels;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import northwind.OrderDetails;
+import northwind.Orders;
+
+public class CommandeViewModel {
+	private Integer Id;
+	private Date orderDate;
+	private Set<Details> details = new HashSet<Details>(0);
+	
+	public CommandeViewModel(Orders o) {
+		this.Id = o.getId();
+		this.orderDate = o.getOrderDate();
+		for(OrderDetails d : o.getOrderDetailses()) {
+			details.add(new Details(d));
+		}
+	}
+
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer id) {
+		Id = id;
+	}
+
+	public Date getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public Set<Details> getDetails() {
+		return details;
+	}
+
+	public void setDetails(Set<Details> details) {
+		this.details = details;
+	}
+	
+}

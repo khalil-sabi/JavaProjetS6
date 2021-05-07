@@ -1,0 +1,15 @@
+package fc.Application.MVC.Controllers;
+
+import fc.Application.MVC.Model.Client;
+import fc.Application.MVC.ViewModels.ClientViewModel;
+import northwind.Customers;
+
+public class EditClientController extends Controller {
+	@Override
+	public ActionResult run(Object ...args) {
+		Integer clientId  = (Integer)args[0];
+		Customers customers = m_Model.getUnCustomers(clientId);
+		ClientViewModel CustomersViewModel = new ClientViewModel(customers);
+		return View(CustomersViewModel);
+	}
+}

@@ -1,0 +1,18 @@
+package fc.Application.MVC.ViewModels;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import northwind.OrderDetails;
+import northwind.Orders;
+
+public class CommandeViewModel {
+	private Integer Id;
+	private Date orderDate;
+	private Set<Details> details = new HashSet<Details>(0);
+	
+	public CommandeViewModel(Orders o) {
+		
+	}
+}

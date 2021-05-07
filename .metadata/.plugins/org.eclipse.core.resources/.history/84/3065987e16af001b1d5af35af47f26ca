@@ -1,0 +1,19 @@
+package fc.Application.MVC.ViewModels;
+
+import java.math.BigDecimal;
+
+import northwind.OrderDetails;
+
+public class Details {
+	private String produit;
+	private BigDecimal quantite;
+	private BigDecimal prixU;
+	private double discount;
+	
+	public Details(OrderDetails o) {
+		this.produit = o.getProducts().getProductName();
+		this.quantite = o.getQuantity();
+		this.prixU = o.getUnitPrice();
+		this.discount = o.getDiscount();
+	}
+}

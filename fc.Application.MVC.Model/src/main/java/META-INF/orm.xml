@@ -6,4 +6,20 @@
     <named-query name="Customers.findAll">
         <query>SELECT c FROM Customers c</query>
     </named-query>
+    
+    <named-query name="Customers.findOne">
+        <query>SELECT c FROM Customers c where c.id = ?1</query>
+    </named-query>
+    
+    <named-query name="Orders.findName">
+        <query>
+        	SELECT o FROM Orders o where o.customers.id = ?1 
+        </query>
+    </named-query>
+    
+    <named-query name="Orders.findOne">
+        <query>
+        	SELECT o FROM Orders o where o.id = ?1 
+        </query>
+    </named-query>
 </entity-mappings>

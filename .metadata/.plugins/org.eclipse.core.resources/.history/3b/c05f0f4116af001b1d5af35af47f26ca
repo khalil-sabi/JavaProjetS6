@@ -1,0 +1,14 @@
+package fc.Application.MVC.ViewModels;
+
+import northwind.OrderDetails;
+
+public class Details {
+	private String produit;
+	private int quantite;
+	private double prixU;
+	private double discount;
+	
+	public Details(OrderDetails o) {
+		
+	}
+}

@@ -1,0 +1,114 @@
+package fc.Application.MVC.Views;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+
+import fc.Application.MVC.Controllers.ListClientsController;
+import fc.Application.MVC.Controllers.ListCommandesController;
+import fc.Application.MVC.ViewModels.ClientViewModel;
+
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+
+public class EditClientView extends Dialog {
+
+	protected Object result;
+	protected Shell shell;
+	private Text txtNom;
+	private Text txtPrenom;
+	private Text txtEmail;
+	
+	public RunController m_Infrastructure;
+	
+	protected ClientViewModel getViewModel()
+	{
+		if (m_Infrastructure != null)
+			return (ClientViewModel)m_Infrastructure.m_ViewModel;
+		else
+			return new ClientViewModel();
+	}
+
+	/**
+	 * Create the dialog.
+	 * @param parent
+	 * @param style
+	 */
+	public EditClientView(Shell parent, int style) {
+		super(parent, style);
+		setText("SWT Dialog");
+	}
+
+	/**
+	 * Open the dialog.
+	 * @return the result
+	 */
+	public Object open() {
+		createContents();
+		shell.open();
+		shell.layout();
+		Display display = getParent().getDisplay();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Create contents of the dialog.
+	 */
+	private void createContents() {
+		shell = new Shell(getParent(), getStyle());
+		shell.setSize(450, 300);
+		shell.setText(getText());
+		
+		Label lblNewLabel = new Label(shell, SWT.NONE);
+		lblNewLabel.setBounds(48, 10, 70, 20);
+		lblNewLabel.setText("Nom");
+		
+		Label lblNewLabel_1 = new Label(shell, SWT.NONE);
+		lblNewLabel_1.setBounds(48, 66, 70, 20);
+		lblNewLabel_1.setText("Prenom");
+		
+		Label lblNewLabel_2 = new Label(shell, SWT.NONE);
+		lblNewLabel_2.setBounds(48, 119, 70, 20);
+		lblNewLabel_2.setText("Email");
+		
+		txtNom = new Text(shell, SWT.BORDER);
+		txtNom.setBounds(124, 10, 78, 26);
+		
+		txtPrenom = new Text(shell, SWT.BORDER);
+		txtPrenom.setBounds(124, 66, 78, 26);
+		
+		txtEmail = new Text(shell, SWT.BORDER);
+		txtEmail.setBounds(124, 119, 78, 26);
+		
+		Button btnNewButton = new Button(shell, SWT.NONE);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				
+			}
+		});
+		btnNewButton.setText("Mettre a jour");
+		btnNewButton.setBounds(48, 161, 90, 30);
+		
+		Button btnNewButton_1 = new Button(shell, SWT.NONE);
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				m_Infrastructure.runController(shell,ListClientsController.class,0);
+			}
+		});
+		btnNewButton_1.setBounds(272, 213, 150, 30);
+		btnNewButton_1.setText("Liste des Clients");
+
+	}
+
+}

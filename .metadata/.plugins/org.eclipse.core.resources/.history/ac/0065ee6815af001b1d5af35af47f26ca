@@ -1,0 +1,5 @@
+package fc.Application.MVC.ViewModels;
+
+public class CommandeViewModel {
+	private Id integer
+}

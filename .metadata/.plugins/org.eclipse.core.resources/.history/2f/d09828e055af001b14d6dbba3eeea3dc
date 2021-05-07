@@ -1,0 +1,44 @@
+package fc.Application.MVC.Model;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+
+import northwind.Customers;
+import northwind.Orders;
+
+
+public class Model {
+	
+	
+	private static Model s_model = null;
+	
+	public static Model getModel() {
+		return s_model;
+	}
+	
+	public static List<Customers> getCustomers() {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("fc.Application.MVC.Model");
+		EntityManager em = emf.createEntityManager();
+		//TypedQuery<Customers> query = em.createQuery(str, Customers.class);
+		TypedQuery<Customers> query = em.createNamedQuery("Customers.findAll", Customers.class);
+		List<Customers> customers = query.getResultList();
+		em.close();
+		emf.close();
+		return customers;
+	}
+	
+	public static List<Orders> getCommandes() {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("fc.Application.MVC.Model");
+		EntityManager em = emf.createEntityManager();
+		TypedQuery<Orders> query = em.createNamedQuery("Orders.findName", Orders.class);
+		query.setParameter(1, 5);
+		List<Orders> orders = query.getResultList();
+		em.close();
+		emf.close();
+		return orders;
+	}
+}

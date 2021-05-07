@@ -7,7 +7,9 @@ import org.eclipse.swt.widgets.Table;
 
 import fc.Application.MVC.Controllers.ListClientsController;
 import fc.Application.MVC.Controllers.ListCommandesController;
-import fc.Application.MVC.ViewModels.CommandeViewModel;
+import fc.Application.MVC.ViewModels.*;
+
+import java.util.Set;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
@@ -28,12 +30,12 @@ public class ListCommandesView extends Dialog {
 	private TableColumn tblclmnNewColumn_1;
 	private TableColumn tblclmnNewColumn_2;
 	
-	protected CommandeViewModel[] getViewModel()
+	protected DataContainer getViewModel()
 	{
 		if (m_Infrastructure != null)
-			return (CommandeViewModel[])m_Infrastructure.m_ViewModel;
+			return (DataContainer)m_Infrastructure.m_ViewModel;
 		else
-			return new CommandeViewModel[0];
+			return new DataContainer();
 	}
 
 	/**
@@ -92,18 +94,18 @@ public class ListCommandesView extends Dialog {
 		tblclmnNewColumn_2.setWidth(100);
 		tblclmnNewColumn_2.setText("Discount");
 		
-		CommandeViewModel[] ps = getViewModel();
-		for (CommandeViewModel p : ps)
+		Set<DetailsViewModel> ds = getViewModel().commandeSelectionne.getDetails();
+		for (DetailsViewModel d : ds)
 		{
 		    TableItem item = new TableItem(table, SWT.NONE);
-		    item.setText(new String[] { ""+p.getProduit(), ""+p.getQuantite(), ""+p.getPrixU(),""+p.getDiscount() });
+		    item.setText(new String[] { ""+d.getProduit(), ""+d.getQuantite(),""+d.getPrixU(),""+d.getDiscount() });
 		}
 		
 		Button btnNewButton = new Button(shell, SWT.NONE);
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseUp(MouseEvent e) {
-				m_Infrastructure.runController(shell,ListClientsController.class);
+				m_Infrastructure.runController(shell,ListClientsController.class,0);
 			}
 		});
 		btnNewButton.setBounds(491, 455, 90, 30);

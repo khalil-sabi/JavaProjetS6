@@ -1,5 +1,7 @@
 package fc.Application.MVC.Views;
 
+import java.util.Objects;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Dialog;
@@ -8,8 +10,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import fc.Application.MVC.Controllers.EditClientController;
 import fc.Application.MVC.Controllers.ListClientsController;
 import fc.Application.MVC.Controllers.ListCommandesController;
+import fc.Application.MVC.ViewModels.ClientViewModel;
 
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
@@ -24,12 +28,12 @@ public class EditClientView extends Dialog {
 	
 	public RunController m_Infrastructure;
 	
-	protected Integer getViewModel()
+	protected ClientViewModel getViewModel()
 	{
 		if (m_Infrastructure != null)
-			return (Integer)m_Infrastructure.m_ViewModel;
+			return (ClientViewModel)m_Infrastructure.m_ViewModel;
 		else
-			return -1;
+			return new ClientViewModel();
 	}
 
 	/**
@@ -81,14 +85,23 @@ public class EditClientView extends Dialog {
 		
 		txtNom = new Text(shell, SWT.BORDER);
 		txtNom.setBounds(124, 10, 78, 26);
+		txtNom.setText(Objects.toString(getViewModel().getNom(),""));
 		
 		txtPrenom = new Text(shell, SWT.BORDER);
 		txtPrenom.setBounds(124, 66, 78, 26);
+		txtPrenom.setText(Objects.toString(getViewModel().getPrenom(),""));
 		
 		txtEmail = new Text(shell, SWT.BORDER);
 		txtEmail.setBounds(124, 119, 78, 26);
+		txtEmail.setText(Objects.toString(getViewModel().getEmail(),""));
 		
 		Button btnNewButton = new Button(shell, SWT.NONE);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				m_Infrastructure.runController(shell,EditClientController.class,getViewModel().getId(),txtNom.getText(),txtPrenom.getText(),txtEmail.getText());
+			}
+		});
 		btnNewButton.setText("Mettre a jour");
 		btnNewButton.setBounds(48, 161, 90, 30);
 		
@@ -96,7 +109,7 @@ public class EditClientView extends Dialog {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseUp(MouseEvent e) {
-				m_Infrastructure.runController(shell,ListClientsController.class);
+				m_Infrastructure.runController(shell,ListClientsController.class,0);
 			}
 		});
 		btnNewButton_1.setBounds(272, 213, 150, 30);

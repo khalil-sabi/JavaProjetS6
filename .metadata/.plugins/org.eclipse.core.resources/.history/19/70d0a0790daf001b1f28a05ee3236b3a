@@ -1,0 +1,133 @@
+package fc.Application.MVC.Views;
+
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Table;
+
+import fc.Application.MVC.Controllers.EditClientController;
+import fc.Application.MVC.Controllers.ListCommandesController;
+import unused.CustomersViewModel;
+
+import org.eclipse.swt.events.TouchListener;
+import org.eclipse.swt.events.TouchEvent;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.ExpandItem;
+import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.widgets.ExpandBar;
+import org.eclipse.swt.custom.CCombo;
+
+public class ListClientsView extends Dialog {
+
+	protected Object result;
+	protected Shell shell;
+	private Table table;
+	
+	public RunController m_Infrastructure;
+	
+	protected CustomersViewModel[] getViewModel()
+	{
+		if (m_Infrastructure != null)
+			return (CustomersViewModel[])m_Infrastructure.m_ViewModel;
+		else
+			return new CustomersViewModel[0];
+	}
+	
+
+	/**
+	 * Create the dialog.
+	 * @param parent
+	 * @param style
+	 */
+	public ListClientsView(Shell parent, int style) {
+		super(parent, style);
+		setText("SWT Dialog");
+	}
+
+	/**
+	 * Open the dialog.
+	 * @return the result
+	 */
+	public Object open() {
+		createContents();
+		shell.open();
+		shell.layout();
+		Display display = getParent().getDisplay();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Create contents of the dialog.
+	 */
+	private void createContents() {
+		shell = new Shell(getParent(), getStyle());
+		shell.setSize(685, 536);
+		shell.setText(getText());
+		
+		Label lblNewLabel = new Label(shell, SWT.NONE);
+		lblNewLabel.setBounds(10, 10, 70, 20);
+		lblNewLabel.setText("Clients:");
+		
+		Button btnEditer = new Button(shell, SWT.NONE);
+		btnEditer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+			}
+		});
+		btnEditer.setBounds(567, 47, 90, 30);
+		btnEditer.setText("Editer");
+		
+		
+		table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
+		table.setBounds(10, 104, 647, 333);
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+		
+		TableColumn tblclmnNom = new TableColumn(table, SWT.NONE);
+		tblclmnNom.setWidth(100);
+		tblclmnNom.setText("Nom");
+		
+		TableColumn tblclmnPrenom = new TableColumn(table, SWT.NONE);
+		tblclmnPrenom.setWidth(100);
+		tblclmnPrenom.setText("Prenom");
+		
+		TableColumn tblclmnEmail = new TableColumn(table, SWT.NONE);
+		tblclmnEmail.setWidth(100);
+		tblclmnEmail.setText("Email");
+		
+		CustomersViewModel[] cs = getViewModel();
+		for (CustomersViewModel c : cs)
+		{
+		    TableItem item = new TableItem(table, SWT.NONE);
+		    item.setText(new String[] { ""+c.getLastName(), ""+c.getFirstName(), ""+c.getEmailAddress()});
+		}
+		
+		Button btnVoirDetailsCommandes = new Button(shell, SWT.NONE);
+		btnVoirDetailsCommandes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				m_Infrastructure.runController(shell,ListCommandesController.class);
+			}
+		});
+		btnVoirDetailsCommandes.setBounds(480, 449, 177, 30);
+		btnVoirDetailsCommandes.setText("Voir details commandes");
+		
+		CCombo combo = new CCombo(shell, SWT.BORDER);
+		combo.setBounds(34, 52, 510, 25);
+		for(CustomersViewModel c: getViewModel()) {
+			combo.add(c.getLastName() + c.getFirstName());
+		}
+
+	}
+}

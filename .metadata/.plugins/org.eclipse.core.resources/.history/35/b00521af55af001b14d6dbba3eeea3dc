@@ -1,0 +1,12 @@
+package fc.Application.MVC.ViewModels;
+
+import java.util.List;
+
+import northwind.Customers;
+import northwind.Orders;
+
+public class DataContainer {
+	public Customers clientSelectionne;
+	public List<ClientViewModel> customers;
+	public List<CommandeViewModel> commandes;
+}

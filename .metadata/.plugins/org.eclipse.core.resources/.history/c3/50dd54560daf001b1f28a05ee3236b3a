@@ -1,0 +1,17 @@
+package fc.Application.MVC.ViewModels;
+
+import northwind.Customers;
+
+public class ClientViewModel {
+	private int Id;
+	private String nom;
+	private String prenom;
+	private String email;
+	
+	public ClientViewModel(Customers c) {
+		this.Id = c.getId();
+		this.nom = c.getLastName();
+		this.prenom = c.getFirstName();
+		this.email = c.getEmailAddress();
+	}
+}

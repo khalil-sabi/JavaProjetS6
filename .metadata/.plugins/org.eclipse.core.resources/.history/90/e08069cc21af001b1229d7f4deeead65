@@ -1,0 +1,18 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import fc.Application.MVC.Model.Model;
+import northwind.*;
+
+class TestModel {
+
+	@Test
+	void test() {
+		List<Orders> orders = Model.getCommandes();
+		for(Orders o : orders)
+	}
+
+}

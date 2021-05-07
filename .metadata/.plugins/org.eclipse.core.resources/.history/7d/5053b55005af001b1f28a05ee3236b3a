@@ -1,0 +1,25 @@
+package fc.Application.MVC.Controllers;
+
+import java.util.List;
+
+import fc.Application.MVC.Model.Client;
+import fc.Application.MVC.ViewModels.ClientViewModel;
+import fc.Application.MVC.ViewModels.CustomersViewModel;
+import northwind.Customers;
+
+public class ListClientsController extends Controller{
+	@Override
+	public ActionResult run(Object ...args) {
+		List<Customers> customers = m_Model.getClients();
+		CustomersViewModel[] customerViewModel = new CustomersViewModel[customers.size()];
+		
+		/*for(int i=0;i < clients.length;i++) {
+			Client client = clients[i];
+			clientViewModel[i] = new ClientViewModel(client.getId(),client.getNom(),client.getPrenom(),client.getEmail());
+		}*/
+		for(Customers c : customers) {
+			customerViewModel[i] = new CustomerViewModel(c);
+		}
+		return View(clientViewModel);
+	}
+}
